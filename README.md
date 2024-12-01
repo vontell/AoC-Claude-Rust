@@ -20,14 +20,18 @@ Here are the rules I am setting for myself:
 
 # How to run the solution for one of the days
 
-To run the tests, do
+To run the tests:
 
 ```bash
 # Run tests just for day 1
 cargo test --test day1
 ```
 
-To run the main function, do
+To run the main function:
+
+```bash
+cargo run --bin day1
+```
 
 # My Learnings
 
