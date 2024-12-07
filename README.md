@@ -67,3 +67,11 @@ Solve the following program in rust. Expect an input text file with the reports 
 * Solved it with the breeze. This time, unlike day 1, it did get rid of the part 1 solution partially.
 * I find myself breezing through this so quickly that I haven't even had to think about the problem or read the code...
 
+### Day 3
+
+**Part 1**
+
+* This is the first day when we relied on importing a third-party dependency. I gave the error to Claude and it
+  resolved it easily, although it was interesting to see the version it selected for the package (obviously a tad
+  outdated, but it was legit). 
+* Answered in one shot once again.
