@@ -64,3 +64,6 @@ Solve the following program in rust. Expect an input text file with the reports 
 
 **Part 2**
 
+* Solved it with the breeze. This time, unlike day 1, it did get rid of the part 1 solution partially.
+* I find myself breezing through this so quickly that I haven't even had to think about the problem or read the code...
+

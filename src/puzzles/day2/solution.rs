@@ -4,8 +4,8 @@ use std::path::Path;
 fn main() {
     let input = read_input("puzzles/day2/input.txt");
     let reports = parse_reports(&input);
-    let safe_count = count_safe_reports(&reports);
-    println!("Number of safe reports: {}", safe_count);
+    let safe_count = count_safe_reports_with_dampener(&reports);
+    println!("Number of safe reports with Problem Dampener: {}", safe_count);
 }
 
 fn read_input(filepath: &str) -> String {
@@ -25,7 +25,7 @@ fn parse_reports(input: &str) -> Vec<Vec<i32>> {
         .collect()
 }
 
-fn is_safe_report(levels: &[i32]) -> bool {
+fn is_safe_sequence(levels: &[i32]) -> bool {
     if levels.len() < 2 {
         return true;
     }
@@ -57,8 +57,29 @@ fn is_safe_report(levels: &[i32]) -> bool {
     true
 }
 
-fn count_safe_reports(reports: &[Vec<i32>]) -> usize {
-    reports.iter().filter(|report| is_safe_report(report)).count()
+fn is_safe_with_dampener(report: &[i32]) -> bool {
+    // First check if it's safe without removing any level
+    if is_safe_sequence(report) {
+        return true;
+    }
+
+    // Try removing each level one at a time
+    for i in 0..report.len() {
+        let mut modified_report: Vec<i32> = report.to_vec();
+        modified_report.remove(i);
+
+        if is_safe_sequence(&modified_report) {
+            return true;
+        }
+    }
+
+    false
+}
+
+fn count_safe_reports_with_dampener(reports: &[Vec<i32>]) -> usize {
+    reports.iter()
+        .filter(|report| is_safe_with_dampener(report))
+        .count()
 }
 
 #[cfg(test)]
@@ -66,12 +87,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_is_safe_report() {
-        assert!(is_safe_report(&[7, 6, 4, 2, 1]), "Should be safe (decreasing)");
-        assert!(!is_safe_report(&[1, 2, 7, 8, 9]), "Should be unsafe (gap too large)");
-        assert!(!is_safe_report(&[9, 7, 6, 2, 1]), "Should be unsafe (gap too large)");
-        assert!(!is_safe_report(&[1, 3, 2, 4, 5]), "Should be unsafe (changes direction)");
-        assert!(!is_safe_report(&[8, 6, 4, 4, 1]), "Should be unsafe (no change)");
-        assert!(is_safe_report(&[1, 3, 6, 7, 9]), "Should be safe (increasing)");
+    fn test_is_safe_with_dampener() {
+        assert!(is_safe_with_dampener(&[7, 6, 4, 2, 1]), "Should be safe (already safe)");
+        assert!(!is_safe_with_dampener(&[1, 2, 7, 8, 9]), "Should be unsafe (no single removal helps)");
+        assert!(!is_safe_with_dampener(&[9, 7, 6, 2, 1]), "Should be unsafe (no single removal helps)");
+        assert!(is_safe_with_dampener(&[1, 3, 2, 4, 5]), "Should be safe (removing 3)");
+        assert!(is_safe_with_dampener(&[8, 6, 4, 4, 1]), "Should be safe (removing middle 4)");
+        assert!(is_safe_with_dampener(&[1, 3, 6, 7, 9]), "Should be safe (already safe)");
     }
 }
