@@ -37,7 +37,30 @@ cargo run --bin day1
 
 ### Day 1
 
+**Part 1**
+
 * The LLM decided to provide a debug function that would print our working directory, even though
   I didn't explicitly asked it to. This was good though, because I was working on trying to
   fix a path bug. Interesting that it chose to add this to the code.
 * Exporting data from Claude is very annoying, will need to revisit this.
+
+**Part 2**
+
+* Solved in one shot. The model elected to edit my original code rather than trying to resolve it. It did leave
+  the answer for part 1 intact as well, which was nice.
+
+### Day 2
+
+**Part 1**
+
+* Basically one shot to solve the first step, with a pretty simple prompt too:
+
+```text
+Solve the following program in rust. Expect an input text file with the reports to be located at puzzles/day2/input.txt. We will run the code through a main() function.
+```
+
+* Was much easier now that the project structure was setup. Note that I did modify the Cargo.toml file myself to support
+  running this day's solution as a bin.
+
+**Part 2**
+
