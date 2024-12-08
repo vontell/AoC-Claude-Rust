@@ -75,3 +75,9 @@ Solve the following program in rust. Expect an input text file with the reports 
   resolved it easily, although it was interesting to see the version it selected for the package (obviously a tad
   outdated, but it was legit). 
 * Answered in one shot once again.
+* I explicitly asked today for it to include comments in the code. It did leave nice comments for all major parts of
+  the code.
+
+**Part 2**
+
+* Once again, solved in one shot, and it chose to edit the original code and not leave the part 1 solution intact.
