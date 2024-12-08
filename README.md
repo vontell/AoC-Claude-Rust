@@ -88,3 +88,14 @@ Solve the following program in rust. Expect an input text file with the reports 
 
 * I felt like the logic for this one was the first one in the calendar that seemed a little trickier... but still a
   breeze, got it on the first try.
+
+**Part 2**
+
+* This is the first time that the LLM printed out an answer that was incorrect (3245). Luckily the model wrote tests,
+  and even the test was incorrect.
+* I had it rewrite the code twice, giving it the failing tests, and both times it failed to resolve the issues... it
+  confidently made the statement that it needed to consider non-adjacent letters in forming "MAS", and rewrote the
+  solution to do that, although that is not the case according the instructions.
+* It wasn't until I asked it to reason about the test failure that it finally realized what was wrong (it was double
+  counting). This might mean that giving the LLM additional instructions to reason about its failures might be a good
+  idea.
