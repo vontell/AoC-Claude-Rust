@@ -17,3 +17,7 @@ path = "src/puzzles/day2/solution.rs"
 [[bin]]
 name = "day3"
 path = "src/puzzles/day3/solution.rs"
+
+[[bin]]
+name = "day4"
+path = "src/puzzles/day4/solution.rs"

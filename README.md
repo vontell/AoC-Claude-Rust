@@ -81,3 +81,10 @@ Solve the following program in rust. Expect an input text file with the reports 
 **Part 2**
 
 * Once again, solved in one shot, and it chose to edit the original code and not leave the part 1 solution intact.
+
+### Day 4
+
+**Part 1**
+
+* I felt like the logic for this one was the first one in the calendar that seemed a little trickier... but still a
+  breeze, got it on the first try.
